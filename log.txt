@@ -1,0 +1,100 @@
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 891 entries, 0 to 890
+Data columns (total 7 columns):
+PassengerId    891 non-null int64
+Survived       891 non-null int64
+Pclass         891 non-null int64
+Sex            891 non-null object
+SibSp          891 non-null int64
+Parch          891 non-null int64
+Embarked       889 non-null object
+dtypes: int64(5), object(2)
+memory usage: 48.8+ KB
+cross valid set number 178
+   PassengerId  Survived  Pclass     Sex  SibSp  Parch Embarked
+0            1         0       3    male      1      0        S
+1            2         1       1  female      1      0        C
+2            3         1       3  female      0      0        S
+3            4         1       1  female      1      0        S
+4            5         0       3    male      0      0        S
+label:0 count:549 prob 0.616162
+label:1 count:342 prob 0.383838
+entropy:0.960708
+###########
+label:0 count:549 prob 0.616162
+label:1 count:342 prob 0.383838
+entropy:0.960708
+current feature:Pclass
+set([1, 2, 3])
+label:0 count:80 prob 0.370370
+label:1 count:136 prob 0.629630
+entropy:0.950956
+label:0 count:97 prob 0.527174
+label:1 count:87 prob 0.472826
+entropy:0.997868
+label:0 count:372 prob 0.757637
+label:1 count:119 prob 0.242363
+entropy:0.798947
+current feature:Sex
+set(['male', 'female'])
+label:0 count:468 prob 0.811092
+label:1 count:109 prob 0.188908
+entropy:0.699182
+label:0 count:81 prob 0.257962
+label:1 count:233 prob 0.742038
+entropy:0.823655
+current feature:SibSp
+set([0, 1, 2, 3, 4, 5, 8])
+label:0 count:398 prob 0.654605
+label:1 count:210 prob 0.345395
+entropy:0.929888
+label:0 count:97 prob 0.464115
+label:1 count:112 prob 0.535885
+entropy:0.996281
+label:0 count:15 prob 0.535714
+label:1 count:13 prob 0.464286
+entropy:0.996317
+label:0 count:12 prob 0.750000
+label:1 count:4 prob 0.250000
+entropy:0.811278
+label:0 count:15 prob 0.833333
+label:1 count:3 prob 0.166667
+entropy:0.650022
+label:0 count:5 prob 1.000000
+entropy:0.000000
+label:0 count:7 prob 1.000000
+entropy:0.000000
+current feature:Parch
+set([0, 1, 2, 3, 4, 5, 6])
+label:0 count:445 prob 0.656342
+label:1 count:233 prob 0.343658
+entropy:0.928276
+label:0 count:53 prob 0.449153
+label:1 count:65 prob 0.550847
+entropy:0.992527
+label:0 count:40 prob 0.500000
+label:1 count:40 prob 0.500000
+entropy:1.000000
+label:0 count:2 prob 0.400000
+label:1 count:3 prob 0.600000
+entropy:0.970951
+label:0 count:4 prob 1.000000
+entropy:0.000000
+label:0 count:4 prob 0.800000
+label:1 count:1 prob 0.200000
+entropy:0.721928
+label:0 count:1 prob 1.000000
+entropy:0.000000
+current feature:Embarked
+set(['Q', nan, 'S', 'C'])
+label:0 count:47 prob 0.610390
+label:1 count:30 prob 0.389610
+entropy:0.964548
+entropy:0.000000
+label:0 count:427 prob 0.663043
+label:1 count:217 prob 0.336957
+entropy:0.921876
+label:0 count:75 prob 0.446429
+label:1 count:93 prob 0.553571
+entropy:0.991703
+final best feature:'Sex' feature idx:1 input entropy:0.960708 best entropy:0.743048
