@@ -60,13 +60,16 @@ def select_opt_feature(DataSet,feature_set):
 
 
 	#print "final best feature:%r feature idx:%d input entropy:%f best entropy:%f" %(feature_set[best_feature_idx],best_feature_idx,input_entropy,best_entropy)
-	print "best feature:%s" % feature_set[best_feature_idx]
+	#print "best feature:%s" % feature_set[best_feature_idx]
 	return best_feature_idx
 
 
 def select_major(leaf):
 	label_count={}
 	total_num=len(leaf.index)
+	print "leaf count:%d" %total_num
+	#if total_num==1:
+	#return (leaf.iloc[0,label_index],1,0)
 	for idx in range(total_num):
 		label_val=leaf.iloc[idx,label_index]
 		if label_val not in  label_count.keys():
@@ -74,10 +77,14 @@ def select_major(leaf):
 		label_count[label_val]+=1
 	#print label_count
 	sort_label=sorted(label_count.iteritems(),key=lambda d:d[1],reverse=True)
+	#if len(sort_label)<1 or len(sort_label[0])<1:
+	#print leaf
+	#print "%d"%len(sort_label)
+	#print "%d"%len(sort_label[0])
 	max_label=sort_label[0][0]
 	max_count=sort_label[0][1]
 	prob=float(max_count)/total_num
-	print "major:%r, prob:%f 1-prob:%f" % (max_label,prob,1-prob)
+	#print "major:%r, prob:%f 1-prob:%f" % (max_label,prob,1-prob)
 	return (max_label,prob,1-prob)
 
 def construct_tree(DataSet,feature_set):
@@ -120,14 +127,14 @@ def plot_node(node,pos,root_flag):
 		parent_pos=root_pos
 	node_info=node[0]
 	feature_val=node[2]
-	print "Node info"
-	print node_info
+	#print "Node info"
+	#print node_info
 	if type(node_info[1]).__name__=='dict':
-		print "here"
+		#print "here"
 		node_text=node_info[0]
 		node_type=decision_node
 	else:
-		print "there"
+		#print "there"
 		#node_text="%s:%r Prob:%.2f"%(label_name,node_info[0],node_info[1])
 		node_text="%r:%.2f"%(node_info[0],node_info[1])
 		node_type=leaf_node
@@ -167,7 +174,7 @@ def plot_tree(tree):
 			node_content=node[0]
 			node_type=node[0][1]
 			root_flag=False
-			print node_content
+			#print node_content
 			if type(node_type).__name__=='dict':
 				sub_dict_tree=node_content[1]
 				for feature in sub_dict_tree:
@@ -179,3 +186,25 @@ def plot_tree(tree):
 		#print "queue len:%d" % len(node_queue)
 
 	plt.show()
+
+def select_label(decision_tree,data_vector):
+	curr_node=decision_tree
+	feature_name=curr_node[0]
+	feature_list=curr_node[1]
+	#print "name %r" % feature_name
+	#print feature_list
+	#print data_vector
+	while type(feature_list).__name__=='dict':
+		#not a leaf
+		feature_val=data_vector[feature_name]
+		if feature_val not in feature_list.keys():
+			print "error @ %r %r" %(feature_name,feature_val)
+			print feature_list
+			return 0
+		curr_node=feature_list[feature_val]
+		feature_name=curr_node[0]
+		feature_list=curr_node[1]
+
+	return curr_node[0]
+
+
