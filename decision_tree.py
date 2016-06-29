@@ -67,7 +67,7 @@ def select_opt_feature(DataSet,feature_set):
 def select_major(leaf):
 	label_count={}
 	total_num=len(leaf.index)
-	print "leaf count:%d" %total_num
+	#print "leaf count:%d" %total_num
 	#if total_num==1:
 	#return (leaf.iloc[0,label_index],1,0)
 	for idx in range(total_num):
@@ -198,8 +198,9 @@ def select_label(decision_tree,data_vector):
 		#not a leaf
 		feature_val=data_vector[feature_name]
 		if feature_val not in feature_list.keys():
-			print "error @ %r %r" %(feature_name,feature_val)
-			print feature_list
+			pid=data_vector['PassengerId']
+			print "error @ %r %r pid:%d" %(feature_name,feature_val,pid)
+			#print feature_list
 			return 0
 		curr_node=feature_list[feature_val]
 		feature_name=curr_node[0]
